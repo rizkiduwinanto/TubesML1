@@ -28,7 +28,6 @@ class KMeans:
         self.iters = 0
         self.objects = objects
         self.distance_matrix = None
-        self.labels = np.full(len(self.objects), -1)
         self.is_convergent = False
         self.error = None
         if init_centroids is None:
@@ -38,10 +37,10 @@ class KMeans:
 
         while self.iters < self.max_iters and not self.is_convergent:
             self.distance_matrix = cdist(self.centroids, self.objects, self.metric)
-            prev_labels = self.labels
             self.labels = self.distance_matrix.argmin(0)
-            self.is_convergent = np.array_equal(prev_labels, self.labels)
+            prev_centroids = self.centroids
             self.centroids = self._calculate_centroids()
+            self.is_convergent = np.array_equal(prev_centroids, self.centroids)
             self.error = np.sum(self.distance_matrix ** 2)
             self.iters += 1
 
