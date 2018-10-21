@@ -79,10 +79,10 @@ class Agglomerative:
             self.clusters[i].extend(self.clusters[j])
             del self.clusters[j]
 
-            self.labels = np.full(len(self.objects), -1)
-            for i, cluster in enumerate(self.clusters):
-                for index in cluster:
-                    self.labels[index] = i
+        self.labels = np.full(len(self.objects), -1)
+        for i, cluster in enumerate(self.clusters):
+            for index in cluster:
+                self.labels[index] = i
 
     def fit_predict(self, objects):
         self.fit(objects)

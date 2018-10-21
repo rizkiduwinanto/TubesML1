@@ -16,7 +16,8 @@ def main():
     print('Centroids:', kmeans.centroids)
     print('Iterations:', kmeans.iters)
     print('Convergent:', kmeans.is_convergent)
-    print(purity_score(y, kmeans.labels))
+    print('Error:', kmeans.error)
+    print('Purity score:', purity_score(y, kmeans.labels))
 
 
 if __name__ == '__main__':
