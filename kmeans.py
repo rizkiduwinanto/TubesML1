@@ -23,8 +23,10 @@ class KMeans:
         return sums / counts
 
     def fit(self, objects, init_centroids=None):
+        self.iters = 0
         self.objects = objects
         self.labels = np.full(len(self.objects), -1)
+        self.is_convergent = False
         if init_centroids is None:
             self.centroids = self.objects[np.random.choice(len(self.objects), self.n_clusters, False), :]
         else:
