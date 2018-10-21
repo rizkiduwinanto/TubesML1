@@ -28,6 +28,7 @@ class KMeans:
         self.iters = 0
         self.objects = objects
         self.distance_matrix = None
+        self.labels = None
         self.is_convergent = False
         self.error = None
         if init_centroids is None:
